@@ -121,21 +121,6 @@ It'll calculate the success rate by comparing the number of successfully cracked
 python hash.py --input dictionary.txt --output hashes.txt
 ```
 
-
-## Submission Requirements
-
-### Part 1: Password Manager
-- [x] Well-documented source code with comments
-- [x] Short report describing encryption technique and security considerations
-- [x] Example usage and test cases
-- [x] Bonus: User interface
-
-### Part 2: HASHCAT Usage
-- [ ] Screenshot of generated passwords
-- [ ] Screenshot of hashed passwords
-- [ ] HASHCAT command for cracking
-- [ ] Success rate with screenshot
-
 ## Author
 
 Ishan Das
