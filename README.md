@@ -138,7 +138,7 @@ python hash.py --input dictionary.txt --output hashes.txt
 
 ## Author
 
-[Your Name]
+Ishan Das
 
 ## Acknowledgments
 
