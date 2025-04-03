@@ -1,1 +1,5 @@
-{"vault_id": "77b3ec3f-e9fb-44c0-b6bf-97df21973a1b", "created_at": "e4370049-0d99-11f0-9636-94e23ca83e9f", "name": "WorkVault"}
+{
+    "vault_id": "77b3ec3f-e9fb-44c0-b6bf-97df21973a1b",
+    "created_at": "e4370049-0d99-11f0-9636-94e23ca83e9f",
+    "name": "WorkVault"
+}

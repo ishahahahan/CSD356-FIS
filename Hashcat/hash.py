@@ -3,23 +3,42 @@ import hashlib
 with open("dictionary.txt", "r") as f:
     passwords = f.read().splitlines()
 
-with open("hashes.txt", "w") as f:
-    for password in passwords:
-        sha1_hash = hashlib.sha1(password.encode()).hexdigest()
-        f.write(sha1_hash + "\n")
+original_hashes = {}
+for password in passwords:
+    sha1_hash = hashlib.sha1(password.encode()).hexdigest()
+    original_hashes[sha1_hash] = password
+
+total_hashes = len(original_hashes)
 
 
-total_hashes = len(passwords)
-cracked_hashes = set()
-
+recovered_hash_set = set()
 with open("recovered.txt", "r") as f:
     for line in f:
         if ":" in line:
             hash_part = line.split(":")[0].strip() 
-            cracked_hashes.add(hash_part)  
+            recovered_hash_set.add(hash_part)  
 
-success_rate = (len(cracked_hashes) / total_hashes) * 100
+recovered_success = (len(recovered_hash_set) / total_hashes) * 100
 
-print(f"Total hashes: {total_hashes}")
-print(f"Unique hashes cracked: {len(cracked_hashes)}")
-print(f"Success rate: {success_rate:.2f}%")
+print(f"Total unique hashes to crack: {total_hashes}")
+print(f"Unique hashes in recovered.txt: {len(recovered_hash_set)}")
+print(f"Success rate (recovered.txt): {recovered_success:.2f}%")
+
+
+cracked_hashes = {}
+
+with open("cracked.txt", "r") as f:
+    for line in f:
+        if ":" in line:
+            hash_part = line.split(":")[0].strip()
+            password_part = line.split(":")[1].strip()
+            cracked_hashes[hash_part] = password_part
+
+
+cracked_count = sum(1 for h in original_hashes if h in cracked_hashes)
+cracked_success = (cracked_count / total_hashes) * 100
+
+print(f"\nUnique hashes in cracked.txt: {len(cracked_hashes)}")
+print(f"Original hashes successfully cracked: {cracked_count}")
+print(f"Success rate (cracked.txt): {cracked_success:.2f}%")
+
